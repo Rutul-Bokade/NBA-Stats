@@ -1,11 +1,11 @@
 # NBA Statistics Dashboard 🏀
 [![CI](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml)
 
-### Team Members: Rakeen Rouf, Osama Ahmed, Faraz Jawed, Simrun Sharma
+
 
 ![NBA_FLOWCHART_white](https://github.com/nogibjj/BallersDash/assets/141798228/0d6e250c-9c80-4ed6-ab75-fc1b20d87adc)
 
-### Project Overview
+
 
 The NBA Statistics Dashboard is an innovative and user-focused project that harnesses daily data scraping to create a dynamic platform for NBA enthusiasts, fantasy league participants, and sports bettors. This cutting-edge tool offers a rich set of functionalities, including head-to-head analytics, raw statistics exploration, interactive visualization, team ranking insights, probability distribution graphs, point difference analytics, real-time injury updates, and dynamic raw stats graphs. By providing a comprehensive and customizable view of NBA team dynamics, the dashboard redefines the landscape of NBA statistics, empowering users to make informed decisions in fantasy leagues and sports betting.
 
@@ -15,7 +15,7 @@ Explore a live demonstration of the NBA Statistics Dashboard! Watch the video to
 
 [![NBA Statistics Dashboard Demo](https://img.youtube.com/vi/vyATMDZy50Y/0.jpg)](https://youtu.be/vyATMDZy50Y)
 
-[🎥 **Watch the Demo**](https://youtu.be/vyATMDZy50Y)
+
 
 ### Data Source: [Basketball References]
 
