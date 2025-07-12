@@ -62,14 +62,15 @@ On Basketball Reference, you can find:
    - Access dynamic graphs for raw stats such as win percentage, field goal percentage, 3-point attempts, defensive rebounds, and more. Users can customize the graphs based on their preferences and input criteria.
 
 ### Dashboard Display
+![dashboard_display](https://github.com/nogibjj/BallersDash/assets/141798228/7218eea3-0fd0-4939-9d6a-efc9f8d4a394)
 
 The Streamlit-based NBA Statistics Dashboard provides a sleek and user-friendly interface for exploring intricate NBA statistics. Users can effortlessly select games, specify date ranges, and choose points of interest. Once data is processed, the dynamic dashboard unfolds, featuring head-to-head analytics, raw team statistics, and interactive visualizations. With customizable parameters, including team rankings, injury updates, and dynamic raw stats graphs, the interface ensures an immersive and tailored experience for fantasy league players, sports bettors, and basketball enthusiasts alike.
 
 ### Detailed ETL Pipeline Workflow
 
-Our ETL (Extract, Transform, Load) pipeline orchestrates a seamless flow of data from Basketball Reference to our Azure Databricks SQL Warehouse, enriching it with analytics. Here's an in-depth breakdown:
+My ETL (Extract, Transform, Load) pipeline orchestrates a seamless flow of data from Basketball Reference to our Azure Databricks SQL Warehouse, enriching it with analytics. Here's an in-depth breakdown:
 
-![ETL_workflow](https://github.com/nogibjj/BallersDash/assets/141798228/3979f626-f6d3-4155-9b88-16f3c260a611)
+
 
 ## 1. Data Extraction:
    - The process commences by extracting raw team data from Basketball Reference, a prominent sports statistics website.
