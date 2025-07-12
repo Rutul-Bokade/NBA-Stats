@@ -1,212 +1,186 @@
-# NBA Analytics Platform 🏀
+# NBA Stats - Real-Time Basketball Analytics Dashboard 🏀
 
-
+![CI Badge](https://github.com/nogibjj/BallersDash/actions/workflows/cicd.yml/badge.svg)
 
 ---
 
 ![NBA Workflow](https://github.com/nogibjj/BallersDash/assets/141798228/0d6e250c-9c80-4ed6-ab75-fc1b20d87adc)
 
-BallersDash is a comprehensive NBA analytics platform tailored for basketball enthusiasts, fantasy team managers, and sports bettors. With live updates and a fully interactive design, this Streamlit-based dashboard delivers insights through advanced data visualizations, head-to-head matchups, raw team stats, and probability-driven forecasts.
+**NBA Stats** is a modern, scalable NBA data visualization and prediction tool designed for basketball strategists, fantasy sports players, and analytics enthusiasts. Built using Streamlit and powered by Databricks, it transforms raw statistical data into interactive visual storytelling and forecasts.
 
 ---
 
-## 📊 Data Backbone
+## 🔗 System Architecture Overview
 
-**Primary Source: Basketball Reference**
-
-Our data pipeline pulls rich NBA datasets including:
-
-* Player and team stats (points, assists, FG%, etc.)
-* Game-by-game logs
-* Advanced analytics and comparisons
-* Trades, historical data, and injury updates
+* **ETL Pipeline:** Daily 6 AM updates from Basketball Reference
+* **Spark Processing:** Aggregates and transforms raw data
+* **SQL Warehouse:** Hosted on Azure Databricks for scalable querying
+* **Front-End:** Streamlit interface with dynamic visualizations
+* **Deployment:** Docker + Azure Web App
 
 ---
 
-## 🔍 Key Features
+## 📊 Data Ingestion
 
-### 1. Matchup Intelligence
+**Source: Basketball Reference**
 
-Break down matchups with win/loss histories, point spreads, and interactive CDF-based point spread forecasts.
+We scrape and process the following datasets:
 
-### 2. Deep Stats Dive
-
-Track raw stats for any NBA team across specific game spans (last 5/10/15/all). View trends, strengths, and outliers.
-
-### 3. Live Visual Exploration
-
-Dynamic filters let users explore data across teams, timeframes, and stat categories—delivered through interactive graphs.
-
-### 4. Power Rankings
-
-Teams are evaluated with a custom algorithm that ranks relative strength—adjusted for context.
-
-### 5. Point Spread Analytics
-
-Explore PDF and CDF graphs visualizing likely point differentials based on recent performance.
-
-### 6. Game Differential Plotting
-
-View an evolving visual of head-to-head point differences—highlighting seasonal momentum.
-
-### 7. Injury Watch
-
-Always stay updated with a real-time injury table that informs team performance analysis.
-
-### 8. Stat Visuals (Dynamic Graphs)
-
-Visualize win percentages, shooting stats, defensive rebounds, and more—fully customizable per user input.
+* Player/game logs
+* Team splits and metrics
+* Injury updates
+* Historical season data
+* Advanced metrics
 
 ---
 
-## 💻 Platform UI
+## 🔬 Key Functional Modules
 
-![dashboard\_display](https://github.com/nogibjj/BallersDash/assets/141798228/7218eea3-0fd0-4939-9d6a-efc9f8d4a394)
+### 🤝 Match Analytics Engine
 
-The user-friendly Streamlit interface allows:
+* Generates team comparison dashboards
+* Calculates win/loss, recent trends, and point spreads
+* Includes interactive CDF probability tables
 
-* Date-based filtering
-* Team/game selections
-* Intuitive navigation between analytics and visuals
+### 📅 Game History Lookup
 
----
+* Review last 5, 10, 15, or all games
+* Raw stats filtered by shooting, defense, and possessions
 
-## ⚙️ End-to-End ETL Workflow
+### 🔄 Dynamic Graph Studio
 
-### 🔄 1. Data Pull
+* Interactive PDF/CDF graphs for match outcomes
+* Trend lines for field goal %, rebounds, and more
 
-Raw team-level data is extracted daily from Basketball Reference.
+### 📈 Rankings + Power Index
 
-### 🧠 2. Spark-Based Transformation
+* Custom algorithm adjusts for strength of schedule
+* Team rankings shift in real-time
 
-Apache Spark handles transformations and aggregates via DataFrames for performance and scalability.
+### 🪑 Injury Dashboard
 
-### 🏢 3. Data Loading
+* Daily refreshed injury tracker
+* Supports pre-game decision making
 
-Transformed outputs are pushed to Azure Databricks SQL Warehouse.
+### 🕹️ Visual Panel
 
-### ⏰ 4. Scheduler
+* Explore stats, outcomes, and rankings through:
 
-Pipeline auto-runs every day at 6 AM to keep the dashboard updated.
-
-### 🐍 5. Python Logic Layer
-
-A Python orchestrator manages extraction, transformation, and analytics from within a Databricks cluster.
-
-### 🌐 6. Web Interface
-
-The frontend (Streamlit) fetches, processes, and displays data via user-defined filters and visualization modules.
+  * Point differential plots
+  * Scaled stats graphs
+  * Game-by-game plots
 
 ---
 
-## 📈 Visualizations
+## 🔢 Visualization Gallery
 
-### PDF Graph
-
+**PDF (Probability Distribution Function):**
 ![pdf](https://github.com/nogibjj/BallersDash/assets/36940292/bdc3f5e7-f7d4-40a9-bc9d-cf730c88dcc0)
 
-### CDF Graph
-
+**CDF (Cumulative Distribution Function):**
 ![CDF](https://github.com/nogibjj/BallersDash/assets/36940292/eed857f6-5bb9-469a-a22b-78e161f54a23)
 
-### Point Difference Table & Plot
-
+**Point Differential Trends:**
 ![image](https://github.com/nogibjj/BallersDash/assets/36940292/543b38b2-eb84-4211-b991-aed205215ceb)
 ![scaled\_stats](https://github.com/nogibjj/BallersDash/assets/36940292/a911421c-16ce-4273-b218-0de44bed26af)
 
-### Dynamic Stat Plots
-
+**Raw Performance Stats:**
 ![raw\_stats\_dynamic](https://github.com/nogibjj/BallersDash/assets/36940292/abea8a29-244d-4706-9bab-89099cc10d09)
 
-### Raw Table
-
+**Tabular Summary:**
 ![raw\_stats\_head](https://github.com/nogibjj/BallersDash/assets/141798228/77082248-4ed6-4a95-a6e0-1f2051decc9c)
 
-### Injury Feed
-
+**Injury Feed:**
 ![injury\_report](https://github.com/nogibjj/BallersDash/assets/141798228/c59a77d3-c4c5-4086-8e11-b1f5eb50d755)
 
 ---
 
-## 📎 Logging System
+## ✈️ Deployment & Automation
 
-Our logger monitors pipeline execution from data scraping to processing. Messages include timestamps and severity levels (DEBUG, INFO, ERROR). Logs also capture API calls and status updates for each NBA team processed.
+### Docker + Azure:
 
-![logging\_screenshot](https://github.com/nogibjj/BallersDash/assets/141798228/40fc0092-603a-44da-a59e-4aed950c82a4)
+* Docker image published to [DockerHub](https://hub.docker.com/repository/docker/shawir/nbastats/general)
+* Hosted on Azure Web App for external access
 
----
+### GitHub Actions CI/CD:
 
-## ☁️ Azure Deployment + Docker
-
-The project is deployed on Azure Web App via Docker, using a containerized microservice image built with Python. Docker simplifies deployment and improves consistency across environments.
-
-* DockerHub: [https://hub.docker.com/repository/docker/shawir/nbastats/general](https://hub.docker.com/repository/docker/shawir/nbastats/general)
-* Container image includes streamlined dependencies and logging for better traceability.
+* Dependency management
+* Linting via `ruff`, `hadolint`, and `black`
+* Future-ready deployment hooks
 
 ![dockerhub\_final](https://github.com/nogibjj/BallersDash/assets/141798228/87f449c9-7535-48fb-86a0-19fcffccc13f)
 
 ---
 
-## 🚀 CI/CD with GitHub Actions
+## 🤬 Load Testing and Diagnostics
 
-The Makefile automates CI/CD tasks:
+**Tool Used:** Locust
 
-* Dependency installation
-* Linting via `ruff` and Dockerfile validation with `hadolint`
-* Black formatting
-* Placeholder deployment target for future steps
-
----
-
-## 🧲 Load Testing via Locust
-
-We used Locust to simulate 10,000 users to test platform scalability. Response time plots from these tests revealed valuable performance bottlenecks.
+* Simulated 10,000 concurrent users
+* Captured requests per second and response time bottlenecks
 
 ![total\_requests\_per\_second\_1702180797-2](https://github.com/nogibjj/BallersDash/assets/89782802/aafea4ee-643d-4c25-aa06-f7bbf0a6e73d)
 
 ---
 
-## 🛠️ Data Engineering + IaC
+## 📁 Logging Infrastructure
 
-* Spark handles all transformation logic
-* Data is stored in Azure Databricks SQL Warehouse
-* Infrastructure is deployed via Terraform (Infrastructure as Code)
-* The daily 6 AM ETL schedule automates analytics delivery
+Tracks:
 
----
+* Pipeline events (pull, transform, load)
+* HTTPS requests
+* Errors by team + timestamp
 
-## 👨‍💻 AI Dev Tools
-
-### GitHub Copilot
-
-* Helped construct Locust files and Docker image
-* Assisted with syntax and logic debugging
-
-### Databricks Assistant
-
-* Helped generate SQL queries
-* Suggested transformation logic within Notebooks
+![logging\_screenshot](https://github.com/nogibjj/BallersDash/assets/141798228/40fc0092-603a-44da-a59e-4aed950c82a4)
 
 ---
 
-## 🗜️ Challenges & Next Steps
+## 🪯 Development Aids
 
-### Constraints:
+### GitHub Copilot:
 
-* Limited Azure credits constrained deeper experimentation
-* Docker images occupied significant local storage
+* Assisted in Docker build and Locust scripting
+* Debugged Python loops and streamlit components
 
-### Future Enhancements:
+### Databricks Assistant:
 
-* Expand UI with more team visuals and stat categories
-* Add team-specific historical performance pages
+* Suggested SQL queries and join logic
+* Generated metadata-aware ETL snippets
 
 ---
 
-## 🛠️ Run It Yourself
+## 🧪 Engineering Stack
+
+| Layer         | Technology                        |
+| ------------- | --------------------------------- |
+| ETL           | Python + Spark                    |
+| DB            | Azure SQL Warehouse               |
+| Infra         | Terraform IaC + Azure App Service |
+| Viz           | Streamlit                         |
+| Orchestration | GitHub Actions + Cron             |
+
+---
+
+## ⚒️ Challenges & Optimizations
+
+**Constraints:**
+
+* Limited Azure budget = reduced VM usage
+* Docker layers caused local storage issues
+
+**Enhancements Planned:**
+
+* Enhanced Streamlit UX with images + animation
+* Add user-specific saved views + stat tracking
+
+---
+
+## ▶️ Run the App Locally
 
 ```bash
 streamlit run mylib/nbastatsdash.py
 ```
 
-The dashboard will be accessible via localhost. The ETL pipeline will populate your Databricks instance with fresh NBA stats daily at 6 AM.
+App will launch at `localhost:8501`.
+
+ETL updates NBA stats each morning via a 6 AM cron job running in Azure Databricks.
